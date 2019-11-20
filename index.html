@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/css/ol.css" type="text/css">
+    <style>
+		.map {
+			height: 560px;
+			width: 100%;
+		}
+
+		.ol-popup {
+			font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif !important;
+			font-size: 12px;
+			position: absolute;
+			background-color: white;
+			-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+			filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+			padding: 15px;
+			border-radius: 10px;
+			border: 1px solid #cccccc;
+			bottom: 12px;
+			left: -50px;
+			min-width: 100px;
+		}
+
+		.ol-popup:after{
+			top: 100%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+
+		.ol-popup:after {
+			border-top-color: white;
+			border-width: 10px;
+			left: 48px;
+			margin-left: -10px;
+		}
+
+		.ol-popup-closer {
+			text-decoration: none;
+			position: absolute;
+			top: 2px;
+			right: 8px;
+		}
+
+		.ol-popup-closer:after {
+			content: "✖";
+			color: #c3c3c3;
+		}
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.1.1/build/ol.js"></script>
+    <title>OpenLayers</title>
+  </head>
+  <body>
+    <h2>Enter a city name:</h2>
+	<p>City name:<input id="inpt" type="text" value="Sofia"><p>
+	<p><button style="width:60px;height:30px" onclick="myFunction()"><b>Press</b></button></p>
+    <div id="map" class="map"></div>
+	<div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>	
+		<script>
+		function myFunction() {
+			var x = document.getElementById("inpt").value;
+			setLocation(x);
+		}
+	</script>
+  </body>
+</html>
